@@ -26,5 +26,15 @@ namespace Negocio
         {
             _per.GuardarPersona(persona);
         }
+
+        public void EditarPersona(Persona persona)
+        {
+            _per.EditarPersona(persona);
+        }
+
+        public void EliminarPersona(Persona persona)
+        {
+            _per.EliminarPersona(persona);
+        }
     }
 }

@@ -14,16 +14,18 @@ namespace Presentacion
 {
     public partial class GestionAlumno : Form
     {
-        private Persona persona = new Persona();
         private Alumno alumno = new Alumno();
+        private Persona persona = new Persona();
         private string tipoGestion;
 
-        public Persona Persona { get => persona; set => persona = value; }
-        public Alumno Alumno { get => alumno; set => alumno = value; }
         public string TipoGestion { get => tipoGestion; set => tipoGestion = value; }
+        public Alumno AlumnoFrm { get => alumno; set => alumno = value; }
+        public Persona PersonaFrm { get => persona; set => persona = value; }
 
         private PersonaCN _perCn = new PersonaCN();
         private AlumnoCN _aluCn = new AlumnoCN();
+
+        ValidacionYControles validacion = new ValidacionYControles();
 
         public GestionAlumno()
         {
@@ -40,21 +42,21 @@ namespace Presentacion
 
                 case "modi":
                     btnAccion.Text = "Editar";
-                    alumno = _aluCn.ObtenerAlumnoPorId(alumno.idAlumno);
+                    AlumnoFrm = _aluCn.ObtenerAlumnoPorId(AlumnoFrm.idAlumno);
                     CargarAlumnoAFormulario();
-                    //txtLegajo.Enabled = false;
-                    txtDni.Enabled = false;
+                    txtLegajo.Enabled = false;
+
                     break;
 
                 case "baja":
                     btnAccion.Text = "Eliminar";
-                    alumno = _aluCn.ObtenerAlumnoPorId(alumno.idAlumno);
+                    AlumnoFrm = _aluCn.ObtenerAlumnoPorId(AlumnoFrm.idAlumno);
                     CargarAlumnoAFormulario();
                     txtLegajo.Enabled = false;
                     txtDni.Enabled = false;
                     txtApe.Enabled = false;
                     txtNom.Enabled = false;
-                    txtFechaNac.Enabled = false;
+                    txtFecha.Enabled = false;
                     txtDireccion.Enabled = false;
                     txtCorreo.Enabled = false;
                     txtTelefono.Enabled = false;
@@ -68,20 +70,37 @@ namespace Presentacion
 
         private void BtnAccion_Click(object sender, EventArgs e)
         {
+
             switch (tipoGestion)
             {
                 case "alta":
-                    ObtenerDatosDeFormulario();
-                    _perCn.GuardarPersona(persona);
-                    alumno.Persona_idPersona = persona.idPersona;
-                    _aluCn.GuardarAlumno(alumno);
+                    if (ValidarCampos() == true)
+                    {
+                        ObtenerDatosDeFormulario();
+                        _perCn.GuardarPersona(PersonaFrm);
+                        AlumnoFrm.Persona_idPersona = PersonaFrm.idPersona;
+                        _aluCn.GuardarAlumno(AlumnoFrm);
+                        MessageBox.Show("Alumno registrado con exito");
+                        this.Close();
+                    }
                     break;
                 case "modi":
-                    ObtenerDatosDeFormulario();
-                    _aluCn.EditarAlumno(alumno);
+                    if (ValidarCampos() == true)
+                    {
+                        ObtenerDatosDeFormulario();
+                        PersonaFrm.idPersona = AlumnoFrm.Persona_idPersona;
+                        _aluCn.EditarAlumno(AlumnoFrm);
+                        _perCn.EditarPersona(PersonaFrm);
+                        MessageBox.Show("Alumno Modificado con exito");
+                        this.Close();
+                    }
                     break;
                 case "baja":
-                    _aluCn.EliminarAlumno(alumno);
+                    PersonaFrm.idPersona = AlumnoFrm.Persona_idPersona;
+                    _aluCn.EliminarAlumno(AlumnoFrm);
+                    _perCn.EliminarPersona(PersonaFrm);
+                    MessageBox.Show("Alumno Eliminado con exito");
+                    this.Close();
                     break;
                 default:
                     Console.WriteLine("default");
@@ -91,29 +110,80 @@ namespace Presentacion
 
         private void CargarAlumnoAFormulario()
         {
-            txtLegajo.Text = Convert.ToString(alumno.Legajo);
-            //alumno.Activo = "S";  // a este hay q pasarlo a un combo
-            txtDni.Text = Convert.ToString(alumno.Persona.Dni);
-            txtApe.Text = alumno.Persona.Apellidos;
-            txtNom.Text = alumno.Persona.Nombres;
-            txtFechaNac.Text = Convert.ToString(alumno.Persona.FechNac);
-            txtDireccion.Text = alumno.Persona.Direccion;
-            txtCorreo.Text = alumno.Persona.Correo;
-            txtTelefono.Text = alumno.Persona.Telefono;
+            txtLegajo.Text = Convert.ToString(AlumnoFrm.Legajo);
+            txtDni.Text = Convert.ToString(AlumnoFrm.Persona.Dni);
+            txtApe.Text = AlumnoFrm.Persona.Apellidos;
+            txtNom.Text = AlumnoFrm.Persona.Nombres;
+            txtFecha.Text = Convert.ToString(AlumnoFrm.Persona.FechNac);
+            txtDireccion.Text = AlumnoFrm.Persona.Direccion;
+            txtCorreo.Text = AlumnoFrm.Persona.Correo;
+            txtTelefono.Text = AlumnoFrm.Persona.Telefono;
         }
 
         private void ObtenerDatosDeFormulario()
         {
-            alumno.Legajo = int.Parse(txtLegajo.Text);
-            alumno.Activo = "S"; // a este hay q traerlo de la vista
-            persona.Dni = int.Parse(txtDni.Text);
-            persona.Apellidos = txtApe.Text;
-            persona.Nombres = txtNom.Text;
-            persona.FechNac = DateTime.Now;
-            persona.Direccion = txtDireccion.Text;
-            persona.Correo = txtCorreo.Text;
-            persona.Telefono = txtTelefono.Text;
+            AlumnoFrm.Legajo = int.Parse(txtLegajo.Text);
+            PersonaFrm.Dni = int.Parse(txtDni.Text);
+            PersonaFrm.Apellidos = txtApe.Text;
+            PersonaFrm.Nombres = txtNom.Text;
+            PersonaFrm.FechNac = Convert.ToDateTime(txtFecha.Text);
+            PersonaFrm.Direccion = txtDireccion.Text;
+            PersonaFrm.Correo = txtCorreo.Text;
+            PersonaFrm.Telefono = txtTelefono.Text;
         }
-        
+
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLegajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.GenericValidarDatoSoloNumero(sender, e);
+        }
+
+        private void txtApe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.GenericValidarDatoSoloLetra(sender, e);
+        }
+
+        private bool ValidarCampos()
+        {
+            List<TextBox> listaTextBox = new List<TextBox>();
+            listaTextBox.Add(txtLegajo);
+            listaTextBox.Add(txtDni);
+            listaTextBox.Add(txtApe);
+            listaTextBox.Add(txtNom);
+            listaTextBox.Add(txtDireccion);
+            listaTextBox.Add(txtCorreo);
+            listaTextBox.Add(txtTelefono);
+            return validacion.ControlCampoNoVacio(listaTextBox);
+        }
+
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.GenericValidarDatoSoloNumero(sender, e);
+        }
+
+        private void txtFechaNac_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.GenericValidarDatoSoloNumero(sender, e);
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validacion.GenericValidarDatoSoloNumero(sender, e);
+        }
+
+        private void dtimeFecha_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

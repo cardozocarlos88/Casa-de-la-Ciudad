@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BD_CasaDeLaCiudadModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Legajo" Type="int" Nullable="false" />
+          <Property Name="Persona_idPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="idCargo" />
+          </Key>
+          <Property Name="idCargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="idCursos" />
+          </Key>
+          <Property Name="idCursos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaIncial" Type="date" Nullable="false" />
+          <Property Name="FechaFinal" Type="date" Nullable="false" />
+          <Property Name="CupoAct" Type="int" Nullable="false" />
+          <Property Name="CupoMax" Type="int" Nullable="false" />
+          <Property Name="Empleado_idEmpleado" Type="int" Nullable="false" />
+          <Property Name="PlanDeEstudio_idPlanDeEstudio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Legajo" Type="int" Nullable="false" />
+          <Property Name="Persona_idPersona" Type="int" Nullable="false" />
+          <Property Name="Cargo_idCargo" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inscripcion">
+          <Key>
+            <PropertyRef Name="idInscripcion" />
+          </Key>
+          <Property Name="idInscripcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Alumno_idAlumno" Type="int" Nullable="false" />
+          <Property Name="Usuario_idUsuario" Type="int" Nullable="false" />
+          <Property Name="Curso_idCursos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="idPermisos" />
+          </Key>
+          <Property Name="idPermisos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="45" />
+          <Property Name="Perfil_idPerfil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Dni" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="FechNac" Type="date" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="45" />
+          <Property Name="Correo" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="PlanDeEstudio">
+          <Key>
+            <PropertyRef Name="idPlanDeEstudio" />
+          </Key>
+          <Property Name="idPlanDeEstudio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RandoEdad" Type="varchar" MaxLength="20" />
+          <Property Name="Activo" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Empleado_idEmpleado" Type="int" Nullable="false" />
+          <Property Name="Perfil_idPerfil" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_CursoPlanDeEstudio' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_CursoPlanDeEstudio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="detalle" Type="varchar" MaxLength="98" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_CursosConInscripcion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_CursosConInscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="detalle" Type="varchar" MaxLength="98" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadoProfesor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_EmpleadoProfesor">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="apeNom" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="apeNom" Type="varchar" MaxLength="92" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_EmpleadosSinUsuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="apeNom" Type="varchar" MaxLength="125" />
+        </EntityType>
+        <Association Name="FK_Alumno_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="Persona_idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cursos_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="Empleado_idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cursos_PlanDeEstudio">
+          <End Role="PlanDeEstudio" Type="Self.PlanDeEstudio" Multiplicity="1" />
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanDeEstudio">
+              <PropertyRef Name="idPlanDeEstudio" />
+            </Principal>
+            <Dependent Role="Cursos">
+              <PropertyRef Name="PlanDeEstudio_idPlanDeEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Cargo">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="idCargo" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Cargo_idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Persona_idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Alumno">
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Alumno_idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="idCursos" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Curso_idCursos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Inscripcion" Type="Self.Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Usuario_idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="Perfil_idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Empleado_idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Perfil_idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_CasaDeLaCiudadModelStoreContainer">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inscripcion" EntityType="Self.Inscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanDeEstudio" EntityType="Self.PlanDeEstudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_CursoPlanDeEstudio" EntityType="Self.vw_CursoPlanDeEstudio" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_CursoPlanDeEstudio].[id] AS [id], 
+    [vw_CursoPlanDeEstudio].[detalle] AS [detalle]
+    FROM [dbo].[vw_CursoPlanDeEstudio] AS [vw_CursoPlanDeEstudio]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_CursosConInscripcion" EntityType="Self.vw_CursosConInscripcion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_CursosConInscripcion].[id] AS [id], 
+    [vw_CursosConInscripcion].[detalle] AS [detalle]
+    FROM [dbo].[vw_CursosConInscripcion] AS [vw_CursosConInscripcion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_EmpleadoProfesor" EntityType="Self.vw_EmpleadoProfesor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_EmpleadoProfesor].[id] AS [id], 
+    [vw_EmpleadoProfesor].[apeNom] AS [apeNom]
+    FROM [dbo].[vw_EmpleadoProfesor] AS [vw_EmpleadoProfesor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_EmpleadosSinUsuario" EntityType="Self.vw_EmpleadosSinUsuario" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_EmpleadosSinUsuario].[id] AS [id], 
+    [vw_EmpleadosSinUsuario].[apeNom] AS [apeNom]
+    FROM [dbo].[vw_EmpleadosSinUsuario] AS [vw_EmpleadosSinUsuario]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Alumno_Persona" Association="Self.FK_Alumno_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Alumno" EntitySet="Alumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cursos_Empleado" Association="Self.FK_Cursos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cursos_PlanDeEstudio" Association="Self.FK_Cursos_PlanDeEstudio">
+            <End Role="PlanDeEstudio" EntitySet="PlanDeEstudio" />
+            <End Role="Cursos" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Cargo" Association="Self.FK_Empleado_Cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Persona" Association="Self.FK_Empleado_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Alumno" Association="Self.FK_Inscripcion_Alumno">
+            <End Role="Alumno" EntitySet="Alumno" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Cursos" Association="Self.FK_Inscripcion_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Usuario" Association="Self.FK_Inscripcion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Inscripcion" EntitySet="Inscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_Perfil" Association="Self.FK_Permisos_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Empleado" Association="Self.FK_Usuario_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Perfil" Association="Self.FK_Usuario_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_CasaDeLaCiudadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="idAlumno" />
+          </Key>
+          <Property Name="idAlumno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Legajo" Type="Int32" Nullable="false" />
+          <Property Name="Persona_idPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Alumno_Persona" FromRole="Alumno" ToRole="Persona" />
+          <NavigationProperty Name="Inscripcions" Relationship="BD_CasaDeLaCiudadModel.FK_Inscripcion_Alumno" FromRole="Alumno" ToRole="Inscripcion" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="idCargo" />
+          </Key>
+          <Property Name="idCargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Cargo" FromRole="Cargo" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Legajo" Type="Int32" Nullable="false" />
+          <Property Name="Persona_idPersona" Type="Int32" Nullable="false" />
+          <Property Name="Cargo_idCargo" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cargo" Relationship="Self.FK_Empleado_Cargo" FromRole="Empleado" ToRole="Cargo" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Empleado_Persona" FromRole="Empleado" ToRole="Persona" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuario_Empleado" FromRole="Empleado" ToRole="Usuario" />
+          <NavigationProperty Name="Cursos" Relationship="BD_CasaDeLaCiudadModel.FK_Cursos_Empleado" FromRole="Empleado" ToRole="Curso" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dni" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechNac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Telefono" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alumnoes" Relationship="Self.FK_Alumno_Persona" FromRole="Persona" ToRole="Alumno" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Persona" FromRole="Persona" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Empleado_idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="Perfil_idPerfil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Usuario_Empleado" FromRole="Usuario" ToRole="Empleado" />
+          <Property Name="Activo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Perfil" Relationship="BD_CasaDeLaCiudadModel.FK_Usuario_Perfil" FromRole="Usuario" ToRole="Perfil" />
+          <NavigationProperty Name="Inscripcions" Relationship="BD_CasaDeLaCiudadModel.FK_Inscripcion_Usuario" FromRole="Usuario" ToRole="Inscripcion" />
+        </EntityType>
+        <Association Name="FK_Alumno_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Alumno">
+              <PropertyRef Name="Persona_idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Cargo">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="idCargo" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Cargo_idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Persona_idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Empleado_idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_CasaDeLaCiudad" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumnoes" EntityType="Self.Alumno" />
+          <EntitySet Name="Cargoes" EntityType="Self.Cargo" />
+          <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
+          <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Alumno_Persona" Association="Self.FK_Alumno_Persona">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Alumno" EntitySet="Alumnoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Cargo" Association="Self.FK_Empleado_Cargo">
+            <End Role="Cargo" EntitySet="Cargoes" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Persona" Association="Self.FK_Empleado_Persona">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Empleado" Association="Self.FK_Usuario_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="vw_EmpleadosSinUsuario" EntityType="BD_CasaDeLaCiudadModel.vw_EmpleadosSinUsuario" />
+          <EntitySet Name="Perfils" EntityType="BD_CasaDeLaCiudadModel.Perfil" />
+          <EntitySet Name="Permisos" EntityType="BD_CasaDeLaCiudadModel.Permiso" />
+          <AssociationSet Name="FK_Permisos_Perfil" Association="BD_CasaDeLaCiudadModel.FK_Permisos_Perfil">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="Permiso" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Perfil" Association="BD_CasaDeLaCiudadModel.FK_Usuario_Perfil">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="PlanDeEstudios" EntityType="BD_CasaDeLaCiudadModel.PlanDeEstudio" />
+          <EntitySet Name="Cursos" EntityType="BD_CasaDeLaCiudadModel.Curso" />
+          <AssociationSet Name="FK_Cursos_Empleado" Association="BD_CasaDeLaCiudadModel.FK_Cursos_Empleado">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Curso" EntitySet="Cursos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cursos_PlanDeEstudio" Association="BD_CasaDeLaCiudadModel.FK_Cursos_PlanDeEstudio">
+            <End Role="PlanDeEstudio" EntitySet="PlanDeEstudios" />
+            <End Role="Curso" EntitySet="Cursos" />
+          </AssociationSet>
+          <EntitySet Name="Inscripcions" EntityType="BD_CasaDeLaCiudadModel.Inscripcion" />
+          <AssociationSet Name="FK_Inscripcion_Alumno" Association="BD_CasaDeLaCiudadModel.FK_Inscripcion_Alumno">
+            <End Role="Alumno" EntitySet="Alumnoes" />
+            <End Role="Inscripcion" EntitySet="Inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Usuario" Association="BD_CasaDeLaCiudadModel.FK_Inscripcion_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Inscripcion" EntitySet="Inscripcions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inscripcion_Cursos" Association="BD_CasaDeLaCiudadModel.FK_Inscripcion_Cursos">
+            <End Role="Curso" EntitySet="Cursos" />
+            <End Role="Inscripcion" EntitySet="Inscripcions" />
+          </AssociationSet>
+          <EntitySet Name="vw_EmpleadoProfesor" EntityType="BD_CasaDeLaCiudadModel.vw_EmpleadoProfesor" />
+          <EntitySet Name="vw_CursosConInscripcion" EntityType="BD_CasaDeLaCiudadModel.vw_CursosConInscripcion" />
+          <EntitySet Name="vw_CursoPlanDeEstudio" EntityType="BD_CasaDeLaCiudadModel.vw_CursoPlanDeEstudio" />
+          </EntityContainer>
+        <EntityType Name="vw_EmpleadosSinUsuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="apeNom" Type="String" MaxLength="125" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+          </Key>
+          <Property Name="idPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Permisos" Relationship="BD_CasaDeLaCiudadModel.FK_Permisos_Perfil" FromRole="Perfil" ToRole="Permiso" />
+          <NavigationProperty Name="Usuarios" Relationship="BD_CasaDeLaCiudadModel.FK_Usuario_Perfil" FromRole="Perfil" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="idPermisos" />
+          </Key>
+          <Property Name="idPermisos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Perfil_idPerfil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Perfil" Relationship="BD_CasaDeLaCiudadModel.FK_Permisos_Perfil" FromRole="Permiso" ToRole="Perfil" />
+        </EntityType>
+        <Association Name="FK_Permisos_Perfil">
+          <End Type="BD_CasaDeLaCiudadModel.Perfil" Role="Perfil" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Permiso" Role="Permiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Permiso">
+              <PropertyRef Name="Perfil_idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Perfil">
+          <End Type="BD_CasaDeLaCiudadModel.Perfil" Role="Perfil" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="idPerfil" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="Perfil_idPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlanDeEstudio">
+          <Key>
+            <PropertyRef Name="idPlanDeEstudio" />
+          </Key>
+          <Property Name="idPlanDeEstudio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RandoEdad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cursos" Relationship="BD_CasaDeLaCiudadModel.FK_Cursos_PlanDeEstudio" FromRole="PlanDeEstudio" ToRole="Curso" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="idCursos" />
+          </Key>
+          <Property Name="idCursos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaIncial" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CupoAct" Type="Int32" Nullable="false" />
+          <Property Name="CupoMax" Type="Int32" Nullable="false" />
+          <Property Name="Empleado_idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="PlanDeEstudio_idPlanDeEstudio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="BD_CasaDeLaCiudadModel.FK_Cursos_Empleado" FromRole="Curso" ToRole="Empleado" />
+          <NavigationProperty Name="PlanDeEstudio" Relationship="BD_CasaDeLaCiudadModel.FK_Cursos_PlanDeEstudio" FromRole="Curso" ToRole="PlanDeEstudio" />
+          <NavigationProperty Name="Inscripcions" Relationship="BD_CasaDeLaCiudadModel.FK_Inscripcion_Cursos" FromRole="Curso" ToRole="Inscripcion" />
+        </EntityType>
+        <Association Name="FK_Cursos_Empleado">
+          <End Type="BD_CasaDeLaCiudadModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Curso" Role="Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="Empleado_idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cursos_PlanDeEstudio">
+          <End Type="BD_CasaDeLaCiudadModel.PlanDeEstudio" Role="PlanDeEstudio" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Curso" Role="Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanDeEstudio">
+              <PropertyRef Name="idPlanDeEstudio" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="PlanDeEstudio_idPlanDeEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Inscripcion">
+          <Key>
+            <PropertyRef Name="idInscripcion" />
+          </Key>
+          <Property Name="idInscripcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Alumno_idAlumno" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Curso_idCursos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alumno" Relationship="BD_CasaDeLaCiudadModel.FK_Inscripcion_Alumno" FromRole="Inscripcion" ToRole="Alumno" />
+          <NavigationProperty Name="Usuario" Relationship="BD_CasaDeLaCiudadModel.FK_Inscripcion_Usuario" FromRole="Inscripcion" ToRole="Usuario" />
+          <NavigationProperty Name="Curso" Relationship="BD_CasaDeLaCiudadModel.FK_Inscripcion_Cursos" FromRole="Inscripcion" ToRole="Curso" />
+        </EntityType>
+        <Association Name="FK_Inscripcion_Alumno">
+          <End Type="BD_CasaDeLaCiudadModel.Alumno" Role="Alumno" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Inscripcion" Role="Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alumno">
+              <PropertyRef Name="idAlumno" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Alumno_idAlumno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Usuario">
+          <End Type="BD_CasaDeLaCiudadModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Inscripcion" Role="Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Usuario_idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inscripcion_Cursos">
+          <End Type="BD_CasaDeLaCiudadModel.Curso" Role="Curso" Multiplicity="1" />
+          <End Type="BD_CasaDeLaCiudadModel.Inscripcion" Role="Inscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Curso">
+              <PropertyRef Name="idCursos" />
+            </Principal>
+            <Dependent Role="Inscripcion">
+              <PropertyRef Name="Curso_idCursos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vw_EmpleadoProfesor">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="apeNom" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="apeNom" Type="String" Nullable="false" MaxLength="92" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_CursosConInscripcion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="detalle" Type="String" MaxLength="98" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_CursoPlanDeEstudio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="detalle" Type="String" MaxLength="98" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_CasaDeLaCiudadModelStoreContainer" CdmEntityContainer="BD_CasaDeLaCiudad">
+          <EntitySetMapping Name="Alumnoes">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="idAlumno" ColumnName="idAlumno" />
+                <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+                <ScalarProperty Name="Persona_idPersona" ColumnName="Persona_idPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargoes">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Cargo">
+              <MappingFragment StoreEntitySet="Cargo">
+                <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadoes">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="Legajo" ColumnName="Legajo" />
+                <ScalarProperty Name="Persona_idPersona" ColumnName="Persona_idPersona" />
+                <ScalarProperty Name="Cargo_idCargo" ColumnName="Cargo_idCargo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechNac" ColumnName="FechNac" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Empleado_idEmpleado" ColumnName="Empleado_idEmpleado" />
+                <ScalarProperty Name="Perfil_idPerfil" ColumnName="Perfil_idPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_EmpleadosSinUsuario">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.vw_EmpleadosSinUsuario">
+              <MappingFragment StoreEntitySet="vw_EmpleadosSinUsuario">
+                <ScalarProperty Name="apeNom" ColumnName="apeNom" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfils">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Permiso">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="Perfil_idPerfil" ColumnName="Perfil_idPerfil" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idPermisos" ColumnName="idPermisos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanDeEstudios">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.PlanDeEstudio">
+              <MappingFragment StoreEntitySet="PlanDeEstudio">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="RandoEdad" ColumnName="RandoEdad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idPlanDeEstudio" ColumnName="idPlanDeEstudio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Curso">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="PlanDeEstudio_idPlanDeEstudio" ColumnName="PlanDeEstudio_idPlanDeEstudio" />
+                <ScalarProperty Name="Empleado_idEmpleado" ColumnName="Empleado_idEmpleado" />
+                <ScalarProperty Name="CupoMax" ColumnName="CupoMax" />
+                <ScalarProperty Name="CupoAct" ColumnName="CupoAct" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="FechaIncial" ColumnName="FechaIncial" />
+                <ScalarProperty Name="idCursos" ColumnName="idCursos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inscripcions">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.Inscripcion">
+              <MappingFragment StoreEntitySet="Inscripcion">
+                <ScalarProperty Name="Curso_idCursos" ColumnName="Curso_idCursos" />
+                <ScalarProperty Name="Usuario_idUsuario" ColumnName="Usuario_idUsuario" />
+                <ScalarProperty Name="Alumno_idAlumno" ColumnName="Alumno_idAlumno" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="idInscripcion" ColumnName="idInscripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_EmpleadoProfesor">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.vw_EmpleadoProfesor">
+              <MappingFragment StoreEntitySet="vw_EmpleadoProfesor">
+                <ScalarProperty Name="apeNom" ColumnName="apeNom" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_CursosConInscripcion">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.vw_CursosConInscripcion">
+              <MappingFragment StoreEntitySet="vw_CursosConInscripcion">
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_CursoPlanDeEstudio">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.vw_CursoPlanDeEstudio">
+              <MappingFragment StoreEntitySet="vw_CursoPlanDeEstudio">
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

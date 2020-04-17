@@ -37,6 +37,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -51,38 +54,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlumnoRepositorio.cs" />
-    <Compile Include="ModelBD.Context.cs">
+    <Compile Include="CursosRepositorio.cs" />
+    <Compile Include="EmpleadoRepositorio.cs" />
+    <Compile Include="InscripcionRepositorio.cs" />
+    <Compile Include="ModelCasaDeLaCiudad.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBD.Context.tt</DependentUpon>
+      <DependentUpon>ModelCasaDeLaCiudad.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelBD.Designer.cs">
+    <Compile Include="ModelCasaDeLaCiudad.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBD.edmx</DependentUpon>
+      <DependentUpon>ModelCasaDeLaCiudad.edmx</DependentUpon>
     </Compile>
     <Compile Include="PersonaRepositorio.cs" />
+    <Compile Include="PlanDeEtudioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ModelBD.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelBD.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ModelBD.edmx.diagram">
-      <DependentUpon>ModelBD.edmx</DependentUpon>
+    <EntityDeploy Include="ModelCasaDeLaCiudad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCasaDeLaCiudad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelCasaDeLaCiudad.edmx.diagram">
+      <DependentUpon>ModelCasaDeLaCiudad.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ModelBD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelBD.Context.cs</LastGenOutput>
-      <DependentUpon>ModelBD.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -92,6 +92,26 @@
       <Project>{fbaab21d-b179-4efb-86ee-a8169c0fb4a9}</Project>
       <Name>Entidad</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelCasaDeLaCiudad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCasaDeLaCiudad.edmx</DependentUpon>
+      <LastGenOutput>ModelCasaDeLaCiudad.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

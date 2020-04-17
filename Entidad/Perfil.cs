@@ -17,15 +17,16 @@ namespace Entidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Perfil()
         {
-            this.Usuario = new HashSet<Usuario>();
+            this.Permisos = new HashSet<Permiso>();
+            this.Usuarios = new HashSet<Usuario>();
         }
     
         public int idPerfil { get; set; }
         public string Descripcion { get; set; }
-        public int Permisos_idPermisos { get; set; }
     
-        public virtual Permisos Permisos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual ICollection<Permiso> Permisos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

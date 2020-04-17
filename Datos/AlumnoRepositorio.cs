@@ -11,11 +11,11 @@ namespace Datos
     {
         public List<Alumno> obtenerTodosLosAlumnos()
         {
-            using (BD_CasaDeLaCiudadEntities bd = new BD_CasaDeLaCiudadEntities())
+            using (BD_CasaDeLaCiudad bd = new BD_CasaDeLaCiudad())
             {
-                return bd.Alumno
-                    .Include("Persona")
-                    .Where(x => x.Activo == "S")
+                return bd.Alumnoes
+                    .Include("Persona")  // esto es como un inner join "=="
+                    //.Where(x => x.Activo == "S") 
                     .OrderByDescending(x => x.idAlumno)
                     .ToList();
             }
@@ -23,42 +23,42 @@ namespace Datos
 
         public Alumno ObtenerAlumnoPorId(int id)
         {
-            using (BD_CasaDeLaCiudadEntities bd = new BD_CasaDeLaCiudadEntities())
+            using (BD_CasaDeLaCiudad bd = new BD_CasaDeLaCiudad())
             {
-                return bd.Alumno
+                return bd.Alumnoes
                     .Include("Persona")
                     .Where(x => x.idAlumno == id)
-                    .OrderByDescending(x => x.idAlumno)
                     .First();
             }
         }
 
         public void GuardarAlumno(Alumno alumno)
         {
-            using (BD_CasaDeLaCiudadEntities bd = new BD_CasaDeLaCiudadEntities())
+            using (BD_CasaDeLaCiudad bd = new BD_CasaDeLaCiudad())
             {
-                bd.Alumno.Add(alumno);
+                //alumno.Activo = "S";
+                bd.Alumnoes.Add(alumno);
                 bd.SaveChanges();
             }
         }
 
         public void EditarAlumno(Alumno alumno)
         {
-            using (BD_CasaDeLaCiudadEntities bd = new BD_CasaDeLaCiudadEntities())
+            using (BD_CasaDeLaCiudad bd = new BD_CasaDeLaCiudad())
             {
-                Alumno aluEdit = bd.Alumno.FirstOrDefault(x => x.idAlumno == alumno.idAlumno);
+                Alumno aluEdit = bd.Alumnoes.FirstOrDefault(x => x.idAlumno == alumno.idAlumno);
                 aluEdit.Legajo = alumno.Legajo;
-                aluEdit.Activo = alumno.Activo;
                 bd.SaveChanges();
             }
         }
 
         public void EliminarAlumno(Alumno alumno)
         {
-            using (BD_CasaDeLaCiudadEntities bd = new BD_CasaDeLaCiudadEntities())
+            using (BD_CasaDeLaCiudad bd = new BD_CasaDeLaCiudad())
             {
-                Alumno aluEdit = bd.Alumno.FirstOrDefault(x => x.idAlumno == alumno.idAlumno);
-                aluEdit.Activo = "N";
+                Alumno aluEdit = bd.Alumnoes.FirstOrDefault(x => x.idAlumno == alumno.idAlumno);
+                
+                bd.Alumnoes.Remove(aluEdit); 
                 bd.SaveChanges();
             }
         }

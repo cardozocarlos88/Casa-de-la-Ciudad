@@ -21,7 +21,7 @@ namespace Entidad
         public int Curso_idCursos { get; set; }
     
         public virtual Alumno Alumno { get; set; }
-        public virtual Cursos Cursos { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual Curso Curso { get; set; }
     }
 }

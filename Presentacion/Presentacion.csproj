@@ -35,10 +35,13 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ProyectoEjemploEntity\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\ProyectoEjemploEntity\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,11 +56,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Ayuda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Ayuda.Designer.cs">
+      <DependentUpon>Ayuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultarAsistencia.Designer.cs">
+      <DependentUpon>ConsultarAsistencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionCursos.Designer.cs">
+      <DependentUpon>GestionCursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionEmpleado.Designer.cs">
+      <DependentUpon>GestionEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionInscripcion.Designer.cs">
+      <DependentUpon>GestionInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionPlanDeEstudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionPlanDeEstudio.Designer.cs">
+      <DependentUpon>GestionPlanDeEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionUsuario.Designer.cs">
+      <DependentUpon>GestionUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoAlumnos.Designer.cs">
+      <DependentUpon>ListadoAlumnos.cs</DependentUpon>
     </Compile>
     <Compile Include="GestionAlumno.cs">
       <SubType>Form</SubType>
@@ -65,13 +110,99 @@
     <Compile Include="GestionAlumno.Designer.cs">
       <DependentUpon>GestionAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoCursos.Designer.cs">
+      <DependentUpon>ListadoCursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoEmpleado.Designer.cs">
+      <DependentUpon>ListadoEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoInscripcion.Designer.cs">
+      <DependentUpon>ListadoInscripcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoPlanDeEstudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoPlanDeEstudio.Designer.cs">
+      <DependentUpon>ListadoPlanDeEstudio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoUsuario.Designer.cs">
+      <DependentUpon>ListadoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ValidacionYControles.cs" />
+    <EmbeddedResource Include="Ayuda.resx">
+      <DependentUpon>Ayuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultarAsistencia.resx">
+      <DependentUpon>ConsultarAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionCursos.resx">
+      <DependentUpon>GestionCursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionEmpleado.resx">
+      <DependentUpon>GestionEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionInscripcion.resx">
+      <DependentUpon>GestionInscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionPlanDeEstudio.resx">
+      <DependentUpon>GestionPlanDeEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionUsuario.resx">
+      <DependentUpon>GestionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoAlumnos.resx">
+      <DependentUpon>ListadoAlumnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionAlumno.resx">
       <DependentUpon>GestionAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoCursos.resx">
+      <DependentUpon>ListadoCursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoEmpleado.resx">
+      <DependentUpon>ListadoEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoInscripcion.resx">
+      <DependentUpon>ListadoInscripcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoPlanDeEstudio.resx">
+      <DependentUpon>ListadoPlanDeEstudio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoUsuario.resx">
+      <DependentUpon>ListadoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,7 +212,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +229,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{42BFD13E-09CB-4163-A1F5-705220B94029}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
       <Project>{fbaab21d-b179-4efb-86ee-a8169c0fb4a9}</Project>
       <Name>Entidad</Name>
@@ -104,6 +241,66 @@
       <Project>{0ec44c2e-c119-4684-a666-519be242b07b}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moodle_pd-02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multimedia.normal.b2ce29af4a9ef926.70756e746f5f6469676974616c335f6e6f726d616c2e6a7067.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1573.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\depositphotos_51489601-stock-photo-user-blue-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diseño-de-abstract-icon-symbol-del-hombre-negocios-empleado-oficina-usuario-123884114.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\siu-guarani.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multimedia.normal.b2ce29af4a9ef926.70756e746f5f6469676974616c335f6e6f726d616c2e6a70671.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multimedia.normal.b2ce29af4a9ef926.70756e746f5f6469676974616c335f6e6f726d616c2e6a70672.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moodle_pd-021.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descarga.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diseño-de-abstract-icon-symbol-del-hombre-negocios-empleado-oficina-usuario-1238841141.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

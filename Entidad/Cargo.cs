@@ -17,13 +17,13 @@ namespace Entidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cargo()
         {
-            this.Empleado = new HashSet<Empleado>();
+            this.Empleadoes = new HashSet<Empleado>();
         }
     
         public int idCargo { get; set; }
         public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public virtual ICollection<Empleado> Empleadoes { get; set; }
     }
 }

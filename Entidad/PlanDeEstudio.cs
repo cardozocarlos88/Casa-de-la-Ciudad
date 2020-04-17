@@ -17,15 +17,15 @@ namespace Entidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PlanDeEstudio()
         {
-            this.Cursos = new HashSet<Cursos>();
+            this.Cursos = new HashSet<Curso>();
         }
     
         public int idPlanDeEstudio { get; set; }
         public string Nombre { get; set; }
-        public int RandoEdad { get; set; }
+        public string RandoEdad { get; set; }
         public string Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cursos> Cursos { get; set; }
+        public virtual ICollection<Curso> Cursos { get; set; }
     }
 }

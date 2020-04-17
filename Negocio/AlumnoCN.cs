@@ -36,5 +36,12 @@ namespace Negocio
         {
             _aluRep.EliminarAlumno(alumno);
         }
+
+        public Alumno ObtenerAlumnoPorDocumento(int dni)
+        {
+            Alumno alu = new Alumno();
+            alu = obtenerTodosLosAlumnos().Where(x => x.Persona.Dni == dni).FirstOrDefault();
+            return alu;
+        }
     }
 }

@@ -17,8 +17,8 @@ namespace Entidad
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Persona()
         {
-            this.Alumno = new HashSet<Alumno>();
-            this.Empleado = new HashSet<Empleado>();
+            this.Alumnoes = new HashSet<Alumno>();
+            this.Empleadoes = new HashSet<Empleado>();
         }
     
         public int idPersona { get; set; }
@@ -31,8 +31,8 @@ namespace Entidad
         public string Correo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Alumno> Alumno { get; set; }
+        public virtual ICollection<Alumno> Alumnoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Empleado> Empleado { get; set; }
+        public virtual ICollection<Empleado> Empleadoes { get; set; }
     }
 }
