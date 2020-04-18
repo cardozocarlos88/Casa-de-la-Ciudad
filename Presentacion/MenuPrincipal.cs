@@ -29,10 +29,8 @@ namespace Presentacion
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-                  
             habilitarBotones();
             CargarSesionUsuario();
-
         }
 
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,7 +40,7 @@ namespace Presentacion
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            Application.Exit();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +48,7 @@ namespace Presentacion
             if(MessageBox.Show("¿Desea Salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
             { 
                 {
-                Application.Exit();
+                    Application.Exit();
                 }
             }
         }
@@ -147,7 +145,7 @@ namespace Presentacion
 
         private void btnAsis_Click(object sender, EventArgs e)
         {
-            Form ListAsis = new ConsultarAsistencia();
+            Reporte.ReporteAsistencia ListAsis = new Reporte.ReporteAsistencia();
             ListAsis.Show();
         
 
@@ -167,6 +165,10 @@ namespace Presentacion
             //inscirvion.usuario = UserSession;
         }
 
+        private void MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
     
 }

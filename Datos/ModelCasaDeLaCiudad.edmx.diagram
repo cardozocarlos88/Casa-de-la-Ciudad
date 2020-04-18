@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.Cargo" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.Empleado" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.Persona" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.sysdiagram" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.Usuario" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="BD_CasaDeLaCiudadModel.FK_Alumno_Persona" ManuallyRouted="false" />
         <AssociationConnector Association="BD_CasaDeLaCiudadModel.FK_Empleado_Cargo" ManuallyRouted="false" />
@@ -32,6 +31,7 @@
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.vw_EmpleadoProfesor" Width="1.5" PointX="8.375" PointY="8.75" />
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.vw_CursosConInscripcion" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.vw_CursoPlanDeEstudio" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BD_CasaDeLaCiudadModel.vw_ListadoAlumnosPorCurso" Width="1.5" PointX="5.375" PointY="8.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

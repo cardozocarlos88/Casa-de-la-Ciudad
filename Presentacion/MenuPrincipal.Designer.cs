@@ -47,12 +47,13 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(890, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1187, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,20 +63,20 @@
             this.cerrarSesiónToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -84,14 +85,14 @@
             this.acercaDeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ayudaToolStripMenuItem});
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.acercaDeToolStripMenuItem.Text = "Ayuda";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.ayudaToolStripMenuItem.Text = "Acerca de ...";
             this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
@@ -102,9 +103,10 @@
             this.btnUsuario.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuario.ForeColor = System.Drawing.Color.Black;
             this.btnUsuario.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnUsuario.Location = new System.Drawing.Point(156, 144);
+            this.btnUsuario.Location = new System.Drawing.Point(208, 177);
+            this.btnUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(121, 118);
+            this.btnUsuario.Size = new System.Drawing.Size(161, 145);
             this.btnUsuario.TabIndex = 1;
             this.btnUsuario.Text = "USUARIOS";
             this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -117,9 +119,10 @@
             this.btnAlum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAlum.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlum.ForeColor = System.Drawing.Color.Black;
-            this.btnAlum.Location = new System.Drawing.Point(355, 282);
+            this.btnAlum.Location = new System.Drawing.Point(473, 347);
+            this.btnAlum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAlum.Name = "btnAlum";
-            this.btnAlum.Size = new System.Drawing.Size(121, 118);
+            this.btnAlum.Size = new System.Drawing.Size(161, 145);
             this.btnAlum.TabIndex = 2;
             this.btnAlum.Text = "ALUMNOS";
             this.btnAlum.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -132,9 +135,10 @@
             this.btnCurso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCurso.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCurso.ForeColor = System.Drawing.Color.Black;
-            this.btnCurso.Location = new System.Drawing.Point(573, 144);
+            this.btnCurso.Location = new System.Drawing.Point(764, 177);
+            this.btnCurso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCurso.Name = "btnCurso";
-            this.btnCurso.Size = new System.Drawing.Size(121, 118);
+            this.btnCurso.Size = new System.Drawing.Size(161, 145);
             this.btnCurso.TabIndex = 3;
             this.btnCurso.Text = "CURSOS";
             this.btnCurso.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -148,9 +152,10 @@
             this.btnEmpleado.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmpleado.ForeColor = System.Drawing.Color.Black;
             this.btnEmpleado.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEmpleado.Location = new System.Drawing.Point(293, 144);
+            this.btnEmpleado.Location = new System.Drawing.Point(391, 177);
+            this.btnEmpleado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEmpleado.Name = "btnEmpleado";
-            this.btnEmpleado.Size = new System.Drawing.Size(121, 118);
+            this.btnEmpleado.Size = new System.Drawing.Size(161, 145);
             this.btnEmpleado.TabIndex = 4;
             this.btnEmpleado.Text = "EMPLEADOS";
             this.btnEmpleado.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -163,9 +168,10 @@
             this.btnAsis.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAsis.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAsis.ForeColor = System.Drawing.Color.Black;
-            this.btnAsis.Location = new System.Drawing.Point(497, 282);
+            this.btnAsis.Location = new System.Drawing.Point(663, 347);
+            this.btnAsis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAsis.Name = "btnAsis";
-            this.btnAsis.Size = new System.Drawing.Size(121, 118);
+            this.btnAsis.Size = new System.Drawing.Size(161, 145);
             this.btnAsis.TabIndex = 8;
             this.btnAsis.Text = "CONSULTAR ASISTENCIA";
             this.btnAsis.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -178,9 +184,10 @@
             this.btnPest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPest.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPest.ForeColor = System.Drawing.Color.Black;
-            this.btnPest.Location = new System.Drawing.Point(433, 144);
+            this.btnPest.Location = new System.Drawing.Point(577, 177);
+            this.btnPest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPest.Name = "btnPest";
-            this.btnPest.Size = new System.Drawing.Size(121, 118);
+            this.btnPest.Size = new System.Drawing.Size(161, 145);
             this.btnPest.TabIndex = 6;
             this.btnPest.Text = "PLAN DE ESTUDIO";
             this.btnPest.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -193,9 +200,10 @@
             this.btnIns.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnIns.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIns.ForeColor = System.Drawing.Color.Black;
-            this.btnIns.Location = new System.Drawing.Point(214, 282);
+            this.btnIns.Location = new System.Drawing.Point(285, 347);
+            this.btnIns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIns.Name = "btnIns";
-            this.btnIns.Size = new System.Drawing.Size(121, 118);
+            this.btnIns.Size = new System.Drawing.Size(161, 145);
             this.btnIns.TabIndex = 5;
             this.btnIns.Text = "INSCRIPCIONES";
             this.btnIns.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -208,18 +216,19 @@
             this.lblUser.BackColor = System.Drawing.Color.Transparent;
             this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(618, 41);
+            this.lblUser.Location = new System.Drawing.Point(824, 50);
+            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(0, 16);
+            this.lblUser.Size = new System.Drawing.Size(0, 20);
             this.lblUser.TabIndex = 9;
             // 
             // MenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Presentacion.Properties.Resources._1573;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(890, 539);
+            this.ClientSize = new System.Drawing.Size(1187, 663);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnAsis);
             this.Controls.Add(this.btnPest);
@@ -230,9 +239,11 @@
             this.Controls.Add(this.btnUsuario);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

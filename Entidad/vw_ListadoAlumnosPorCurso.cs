@@ -12,12 +12,11 @@ namespace Entidad
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class vw_ListadoAlumnosPorCurso
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int idCursos { get; set; }
+        public string legajo { get; set; }
+        public string Dni { get; set; }
+        public string apeNom { get; set; }
     }
 }

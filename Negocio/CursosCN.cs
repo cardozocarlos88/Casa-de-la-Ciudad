@@ -52,6 +52,12 @@ namespace Negocio
         {
             return _cuRep.ObtenerCursosConCuposYFechaHasta();
         }
-        
+
+        public List<vw_ListadoAlumnosPorCurso> ObtenerAlumnosPorCurso(int idCurso)
+        {
+            return _cuRep.ObtenerAlumnosPorCurso(idCurso);
+        }
+
+
     }
 }

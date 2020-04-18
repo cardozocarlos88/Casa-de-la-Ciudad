@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\GIT\Casa-de-la-Ciudad\Datos\ModelCasaDeLaCiudad.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'D:\GIT\CHAFA\Casa-de-la-Ciudad\Datos\ModelCasaDeLaCiudad.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

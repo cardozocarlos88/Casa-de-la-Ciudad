@@ -89,16 +89,6 @@
           <Property Name="RandoEdad" Type="varchar" MaxLength="20" />
           <Property Name="Activo" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="idUsuario" />
@@ -146,6 +136,18 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="apeNom" Type="varchar" MaxLength="125" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_ListadoAlumnosPorCurso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ListadoAlumnosPorCurso">
+          <Key>
+            <PropertyRef Name="idCursos" />
+            <PropertyRef Name="apeNom" />
+          </Key>
+          <Property Name="idCursos" Type="int" Nullable="false" />
+          <Property Name="legajo" Type="varchar" MaxLength="30" />
+          <Property Name="Dni" Type="varchar" MaxLength="30" />
+          <Property Name="apeNom" Type="varchar" MaxLength="92" Nullable="false" />
         </EntityType>
         <Association Name="FK_Alumno_Persona">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
@@ -289,7 +291,6 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
           <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlanDeEstudio" EntityType="Self.PlanDeEstudio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_CursoPlanDeEstudio" EntityType="Self.vw_CursoPlanDeEstudio" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -314,6 +315,14 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
     [vw_EmpleadosSinUsuario].[id] AS [id], 
     [vw_EmpleadosSinUsuario].[apeNom] AS [apeNom]
     FROM [dbo].[vw_EmpleadosSinUsuario] AS [vw_EmpleadosSinUsuario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ListadoAlumnosPorCurso" EntityType="Self.vw_ListadoAlumnosPorCurso" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ListadoAlumnosPorCurso].[idCursos] AS [idCursos], 
+    [vw_ListadoAlumnosPorCurso].[legajo] AS [legajo], 
+    [vw_ListadoAlumnosPorCurso].[Dni] AS [Dni], 
+    [vw_ListadoAlumnosPorCurso].[apeNom] AS [apeNom]
+    FROM [dbo].[vw_ListadoAlumnosPorCurso] AS [vw_ListadoAlumnosPorCurso]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Alumno_Persona" Association="Self.FK_Alumno_Persona">
             <End Role="Persona" EntitySet="Persona" />
@@ -411,16 +420,6 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
           <NavigationProperty Name="Alumnoes" Relationship="Self.FK_Alumno_Persona" FromRole="Persona" ToRole="Alumno" />
           <NavigationProperty Name="Empleadoes" Relationship="Self.FK_Empleado_Persona" FromRole="Persona" ToRole="Empleado" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="idUsuario" />
@@ -488,7 +487,6 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
           <EntitySet Name="Cargoes" EntityType="Self.Cargo" />
           <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
           <EntitySet Name="Personas" EntityType="Self.Persona" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
           <AssociationSet Name="FK_Alumno_Persona" Association="Self.FK_Alumno_Persona">
             <End Role="Persona" EntitySet="Personas" />
@@ -543,6 +541,7 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
           <EntitySet Name="vw_EmpleadoProfesor" EntityType="BD_CasaDeLaCiudadModel.vw_EmpleadoProfesor" />
           <EntitySet Name="vw_CursosConInscripcion" EntityType="BD_CasaDeLaCiudadModel.vw_CursosConInscripcion" />
           <EntitySet Name="vw_CursoPlanDeEstudio" EntityType="BD_CasaDeLaCiudadModel.vw_CursoPlanDeEstudio" />
+          <EntitySet Name="vw_ListadoAlumnosPorCurso" EntityType="BD_CasaDeLaCiudadModel.vw_ListadoAlumnosPorCurso" />
           </EntityContainer>
         <EntityType Name="vw_EmpleadosSinUsuario">
           <Key>
@@ -713,6 +712,16 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="detalle" Type="String" MaxLength="98" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="vw_ListadoAlumnosPorCurso">
+          <Key>
+            <PropertyRef Name="idCursos" />
+            <PropertyRef Name="apeNom" />
+          </Key>
+          <Property Name="idCursos" Type="Int32" Nullable="false" />
+          <Property Name="legajo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Dni" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apeNom" Type="String" Nullable="false" MaxLength="92" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -758,17 +767,6 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
                 <ScalarProperty Name="FechNac" ColumnName="FechNac" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -864,6 +862,16 @@ advertencia 6002: La tabla o vista 'BD_CasaDeLaCiudad.dbo.vw_EmpleadosSinUsuario
               <MappingFragment StoreEntitySet="vw_CursoPlanDeEstudio">
                 <ScalarProperty Name="detalle" ColumnName="detalle" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ListadoAlumnosPorCurso">
+            <EntityTypeMapping TypeName="BD_CasaDeLaCiudadModel.vw_ListadoAlumnosPorCurso">
+              <MappingFragment StoreEntitySet="vw_ListadoAlumnosPorCurso">
+                <ScalarProperty Name="apeNom" ColumnName="apeNom" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="legajo" ColumnName="legajo" />
+                <ScalarProperty Name="idCursos" ColumnName="idCursos" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

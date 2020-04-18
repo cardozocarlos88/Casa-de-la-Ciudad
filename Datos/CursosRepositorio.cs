@@ -101,6 +101,17 @@ namespace Datos
                     .ToList();
             }
         }
+
+        public List<vw_ListadoAlumnosPorCurso> ObtenerAlumnosPorCurso(int idCurso)
+        {
+            using (BD_CasaDeLaCiudad bd = new BD_CasaDeLaCiudad())
+            {
+                return bd.vw_ListadoAlumnosPorCurso
+                    .Where(x => x.idCursos == idCurso)
+                    .OrderByDescending(x => x.apeNom)
+                    .ToList();
+            }
+        }
     }
 
 }

@@ -14,7 +14,6 @@ namespace Datos
     using System.Data.Entity.Infrastructure;
     using Entidad;
 
-
     public partial class BD_CasaDeLaCiudad : DbContext
     {
         public BD_CasaDeLaCiudad()
@@ -31,7 +30,6 @@ namespace Datos
         public virtual DbSet<Cargo> Cargoes { get; set; }
         public virtual DbSet<Empleado> Empleadoes { get; set; }
         public virtual DbSet<Persona> Personas { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<vw_EmpleadosSinUsuario> vw_EmpleadosSinUsuario { get; set; }
         public virtual DbSet<Perfil> Perfils { get; set; }
@@ -42,5 +40,6 @@ namespace Datos
         public virtual DbSet<vw_EmpleadoProfesor> vw_EmpleadoProfesor { get; set; }
         public virtual DbSet<vw_CursosConInscripcion> vw_CursosConInscripcion { get; set; }
         public virtual DbSet<vw_CursoPlanDeEstudio> vw_CursoPlanDeEstudio { get; set; }
+        public virtual DbSet<vw_ListadoAlumnosPorCurso> vw_ListadoAlumnosPorCurso { get; set; }
     }
 }
